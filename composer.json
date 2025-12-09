@@ -1,0 +1,14 @@
+{
+    "name": "autoservice/website",
+    "description": "Сайт автосервиса с каталогом запчастей",
+    "type": "project",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
+

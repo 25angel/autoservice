@@ -1,0 +1,94 @@
+═══════════════════════════════════════════════════════════════
+  ДОБРО ПОЖАЛОВАТЬ! САЙТ АВТОСЕРВИСА
+═══════════════════════════════════════════════════════════════
+⚡ БЫСТРЫЙ СТАРТ (кратко):
+
+0. Установите необходимые программы (если еще не установлены):
+
+   📱 macOS (через Homebrew):
+   brew install php 
+   brew install mysql
+   brew services start mysql
+   
+   🪟 Windows:
+   
+   Вариант 1 (РЕКОМЕНДУЕТСЯ - самый простой):
+   Скачайте и установите XAMPP: https://www.apachefriends.org/
+   XAMPP включает PHP, MySQL и Apache в одном пакете
+   После установки запустите XAMPP Control Panel и запустите MySQL
+   
+   Вариант 2 (через Chocolatey):
+   choco install php mysql composer
+   
+   Вариант 3 (отдельная установка):
+   - PHP: https://windows.php.net/download/
+   - MySQL: https://dev.mysql.com/downloads/mysql/
+   - Composer: https://getcomposer.org/download/
+
+⚠️ ВАЖНО: Все команды выполняйте из корня проекта (папка php-project)!
+
+1. Установите зависимости проекта (из корня проекта):
+   
+   macOS/Linux:
+   cd /путь/к/php-project
+   composer install
+   
+   Windows:
+   cd C:\путь\к\php-project
+   composer install
+   
+   Если composer не найден, используйте полный путь:
+   C:\xampp\php\composer.phar install  (для XAMPP)
+
+2. Создайте базу данных:
+   
+   macOS/Linux:
+   тут можно без пароля просто enter жми, либо ставь пароль какой хочешь
+   mysql -u root -p -e "CREATE DATABASE autoservice CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+   
+   Windows (XAMPP):
+   C:\xampp\mysql\bin\mysql.exe -u root -e "CREATE DATABASE autoservice CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+   (или просто mysql -u root если в PATH)
+   
+   Windows (отдельная установка MySQL):
+   mysql -u root -p -e "CREATE DATABASE autoservice CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+
+3. Импортируйте данные (из корня проекта):
+   
+   macOS/Linux:
+   mysql -u root -p autoservice < database/schema.sql
+   
+   Windows (XAMPP):
+   C:\xampp\mysql\bin\mysql.exe -u root autoservice < database\schema.sql
+   
+   Windows (отдельная установка):
+   mysql -u root -p autoservice < database\schema.sql
+
+4. Настройте подключение к БД (если нужно):
+   Откройте файл: config/database.php
+   По умолчанию: username='root', password='' (пустой)
+   Если у вас другой пароль MySQL или другой пользователь - измените эти значения
+   Если MySQL установлен стандартно (root без пароля) - можно пропустить этот шаг
+
+5. Запустите сайт (для тестирования):
+   
+   macOS/Linux:
+   php -S localhost:8000
+   
+   Windows (XAMPP):
+   C:\xampp\php\php.exe -S localhost:8000
+   (или просто php -S localhost:8000 если PHP в PATH)
+   
+   Windows (отдельная установка):
+   php -S localhost:8000
+   
+   Затем откройте в браузере: http://localhost:8000
+
+═══════════════════════════════════════════════════════════════
+
+📁 ВАЖНЫЕ ФАЙЛЫ:
+
+• config/database.php - настройки базы данных
+• database/schema.sql - SQL скрипт для создания БД
+═══════════════════════════════════════════════════════════════
+

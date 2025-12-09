@@ -1,0 +1,20 @@
+# Включение модуля перезаписи URL
+RewriteEngine On
+
+# Перенаправление на index.php если файл не существует
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Установка кодировки по умолчанию
+AddDefaultCharset UTF-8
+
+# Защита от просмотра директорий
+Options -Indexes
+
+# Защита конфиденциальных файлов
+<FilesMatch "^(composer\.(json|lock)|\.env|\.git)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
